@@ -5,7 +5,6 @@
   align-items: center;
   height: 100vh;
   background-color: #c2c2d6;
-  touch-action: manipulation;
 }
 .calcContainer {
   width: 400px;
@@ -13,14 +12,12 @@
   background-color: black;
   border: 2px solid #4d4d4d;
   border-radius: 0.5em;
-  touch-action: manipulation;
 }
 .author {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5em;
   margin-top: 1em;
-  touch-action: manipulation;
   span {
     color: #004466;
   }
@@ -28,18 +25,15 @@
 #current {
   color: white;
   text-align: right;
-  touch-action: manipulation;
 }
 #equation {
   color: orange;
   font-size: 1.4rem;
   word-wrap: break-word;
-  touch-action: manipulation;
 }
 #display {
   font-size: 1.8rem;
   word-wrap: break-word;
-  touch-action: manipulation;
 }
 .buttons {
   display: grid;
@@ -118,7 +112,6 @@
     color: white;
     font-size: 1.25em;
     font-family: 'Roboto', sans-serif;
-    touch-action: manipulation;
     &:hover {
       color: black;
       outline: 1px solid white;
