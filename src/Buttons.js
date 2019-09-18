@@ -8,7 +8,9 @@ const Buttons = () => {
     // Clear display and equation if starting from initial value or after evaluated
     // Dont allow zeroes at beginning of equation
     if (
-      (state.display === '0' && e.target.value !== '0') ||
+      (state.display === '0' &&
+        e.target.value !== '0' &&
+        e.target.value !== '.') ||
       state.lastClicked === '='
     ) {
       clearDisplay();
@@ -43,8 +45,13 @@ const Buttons = () => {
       }));
     }
     // If calculator is not in initial value and value is not a decimal
-    //  When number is entered append the number to the rest of the equation and display
-    else if (e.target.value !== '.' && state.display !== '0') {
+    // When number is entered append the number to the rest of the equation and display
+    // MAX numbers allowed on display is 21
+    else if (
+      e.target.value !== '.' &&
+      state.display !== '0' &&
+      state.display.length < 21
+    ) {
       setState(prevState => ({
         ...prevState,
         display: prevState.display + e.target.value,
@@ -165,16 +172,15 @@ const Buttons = () => {
   const handleEval = e => {
     // If equation ends with an operator, remove it from the equation before evaluating
     let trimmedEquation = '';
+    // testRegex is used to make sure equation operators are in order before evaluating
+    let testRegex = /^([-+.*/]{1,})+([\d.]*[-+.*/]{1,})*([\d.]*[-+.*/]{1,}[\d.]*)*$/;
+    // If equation ends with 2 operators take them off before evaluating
     if (
       (state.equation.endsWith('+-') ||
         state.equation.endsWith('*-') ||
         state.equation.endsWith('/-')) &&
-      state.lastClicked != '=' &&
-      state.equation != '.' &&
-      state.equation != '+' &&
-      state.equation != '-' &&
-      state.equation != '/' &&
-      state.equation != '*'
+      state.lastClicked !== '=' &&
+      testRegex.test(state.equation) === false
     ) {
       trimmedEquation = state.equation.substring(0, state.equation.length - 2);
       setState(prevState => ({
@@ -183,17 +189,15 @@ const Buttons = () => {
         display: eval(trimmedEquation),
         lastClicked: e.target.value
       }));
-    } else if (
+    }
+    // If equation ends with 1 operator take it off before evaluating
+    else if (
       (state.equation.endsWith('+') ||
         state.equation.endsWith('-') ||
         state.equation.endsWith('*') ||
         state.equation.endsWith('/')) &&
-      state.lastClicked != '=' &&
-      state.equation != '.' &&
-      state.equation != '+' &&
-      state.equation != '-' &&
-      state.equation != '/' &&
-      state.equation != '*'
+      state.lastClicked !== '=' &&
+      testRegex.test(state.equation) === false
     ) {
       trimmedEquation = state.equation.substring(0, state.equation.length - 1);
       setState(prevState => ({
@@ -202,13 +206,11 @@ const Buttons = () => {
         display: eval(trimmedEquation),
         lastClicked: e.target.value
       }));
-    } else if (
-      state.lastClicked != '=' &&
-      state.equation != '.' &&
-      state.equation != '+' &&
-      state.equation != '-' &&
-      state.equation != '/' &&
-      state.equation != '*'
+    }
+    // If equation is written properly and testRegex passes
+    else if (
+      state.lastClicked !== '=' &&
+      testRegex.test(state.equation) === false
     ) {
       setState(prevState => ({
         ...prevState,

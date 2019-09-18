@@ -8,15 +8,16 @@ const App = () => {
   return (
     <CalculatorProvider>
       <div className="App">
-        <div className="container">
-          <Display />
-          <Buttons />
-        </div>
-        <div className="author">
-          {' '}
-          Designed and Coded by
-          <br />
-          Ian Benton
+        <div>
+          <div className="container">
+            <Display />
+            <Buttons />
+          </div>
+          <div className="author">
+            Designed and Coded by
+            <br />
+            <span>Ian Benton</span>
+          </div>
         </div>
       </div>
     </CalculatorProvider>

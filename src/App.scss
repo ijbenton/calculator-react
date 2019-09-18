@@ -15,21 +15,25 @@
 }
 .author {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+  margin-top: 1em;
+  span {
+    color: #004466;
+  }
 }
 #current {
   color: white;
-  font-size: 1.5rem;
-  #equation {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    color: orange;
-  }
-  #display {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
+  text-align: right;
+}
+#equation {
+  color: orange;
+  font-size: 1.4rem;
+  word-wrap: break-word;
+}
+#display {
+  font-size: 1.8rem;
+  word-wrap: break-word;
 }
 .buttons {
   display: grid;
@@ -113,5 +117,29 @@
       outline: 1px solid white;
       z-index: 3;
     }
+  }
+}
+@media screen and (max-width: 700px) and (min-width: 501px) {
+  #equation {
+    font-size: 1.2rem;
+  }
+  #display {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 250px;
+    font-size: 1rem;
+  }
+  #equation {
+    font-size: 0.9rem;
+  }
+  #display {
+    font-size: 1.2rem;
+  }
+  .author {
+    font-size: 1.2rem;
   }
 }
