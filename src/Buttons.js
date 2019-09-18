@@ -173,7 +173,7 @@ const Buttons = () => {
     // If equation ends with an operator, remove it from the equation before evaluating
     let trimmedEquation = '';
     // testRegex is used to make sure equation operators are in order before evaluating
-    let testRegex = /^([-+*\/]{1,})+([\d.]*[-+*\/]*)*([\d.]*[-+*\/]{1,}[\d.]*)*$|(^[.]+$)/;
+    let testRegex = /^([*\/]{1,}[+-]*)+([\d.]*[-+*\/]*)*([\d.]*[-+*\/]{1,}[\d.]*)*$|(^[.=]+$)/;
     // If equation ends with 2 operators take them off before evaluating
     if (
       (state.equation.endsWith('+-') ||
@@ -224,7 +224,7 @@ const Buttons = () => {
         display: answer,
         lastClicked: e.target.value
       }));
-    } else {
+    } else if (state.lastClicked !== '=') {
       setState(prevState => ({
         ...prevState,
         equation: 'Error',
