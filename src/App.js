@@ -8,8 +8,8 @@ const App = () => {
   return (
     <CalculatorProvider>
       <div className="App">
-        <div>
-          <div className="container">
+        <div className="appContainer">
+          <div className="calcContainer">
             <Display />
             <Buttons />
           </div>

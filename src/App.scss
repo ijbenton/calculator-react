@@ -5,26 +5,34 @@
   align-items: center;
   height: 100vh;
   background-color: #c2c2d6;
+  touch-action: manipulation;
 }
-.container {
+.appContainer {
+  touch-action: manipulation;
+}
+.calcContainer {
   width: 400px;
   padding: 0.25em;
   background-color: black;
   border: 2px solid #4d4d4d;
   border-radius: 0.5em;
+  touch-action: manipulation;
 }
 .author {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5em;
   margin-top: 1em;
+  touch-action: manipulation;
   span {
     color: #004466;
+    touch-action: manipulation;
   }
 }
 #current {
   color: white;
   text-align: right;
+  touch-action: manipulation;
 }
 #equation {
   color: orange;
@@ -112,6 +120,7 @@
     color: white;
     font-size: 1.25em;
     font-family: 'Roboto', sans-serif;
+    touch-action: manipulation;
     &:hover {
       color: black;
       outline: 1px solid white;
@@ -129,7 +138,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .container {
+  .calcContainer {
     width: 250px;
     font-size: 1rem;
   }
