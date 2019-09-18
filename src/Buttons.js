@@ -173,7 +173,7 @@ const Buttons = () => {
     // If equation ends with an operator, remove it from the equation before evaluating
     let trimmedEquation = '';
     // testRegex is used to make sure equation operators are in order before evaluating
-    let testRegex = /^([-+.*/]{1,})+([\d.]*[-+.*/]{1,})*([\d.]*[-+.*/]{1,}[\d.]*)*$/;
+    let testRegex = /^([-+*\/]{1,})+([\d.]*[-+*\/]*)*([\d.]*[-+*\/]{1,}[\d.]*)*$|(^[.]+$)/;
     // If equation ends with 2 operators take them off before evaluating
     if (
       (state.equation.endsWith('+-') ||
@@ -183,10 +183,12 @@ const Buttons = () => {
       testRegex.test(state.equation) === false
     ) {
       trimmedEquation = state.equation.substring(0, state.equation.length - 2);
+      let answer =
+        Math.round(1000000000000 * eval(trimmedEquation)) / 1000000000000;
       setState(prevState => ({
         ...prevState,
-        equation: `${trimmedEquation} = ${eval(trimmedEquation)}`,
-        display: eval(trimmedEquation),
+        equation: `${trimmedEquation} = ${answer}`,
+        display: answer,
         lastClicked: e.target.value
       }));
     }
@@ -200,10 +202,12 @@ const Buttons = () => {
       testRegex.test(state.equation) === false
     ) {
       trimmedEquation = state.equation.substring(0, state.equation.length - 1);
+      let answer =
+        Math.round(1000000000000 * eval(trimmedEquation)) / 1000000000000;
       setState(prevState => ({
         ...prevState,
-        equation: `${trimmedEquation} = ${eval(trimmedEquation)}`,
-        display: eval(trimmedEquation),
+        equation: `${trimmedEquation} = ${answer}`,
+        display: answer,
         lastClicked: e.target.value
       }));
     }
@@ -212,10 +216,12 @@ const Buttons = () => {
       state.lastClicked !== '=' &&
       testRegex.test(state.equation) === false
     ) {
+      let answer =
+        Math.round(1000000000000 * eval(state.equation)) / 1000000000000;
       setState(prevState => ({
         ...prevState,
-        equation: `${prevState.equation} = ${eval(prevState.equation)}`,
-        display: eval(prevState.equation),
+        equation: `${prevState.equation} = ${answer}`,
+        display: answer,
         lastClicked: e.target.value
       }));
     } else {
