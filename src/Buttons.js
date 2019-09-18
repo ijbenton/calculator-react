@@ -24,15 +24,33 @@ const Buttons = () => {
     }
     // If decimal point is entered and there is not already a decimal point in the number
     // Append the decimal to the number on the display and equation
-    else if (e.target.value === '.' && state.display.indexOf('.') === -1) {
+    else if (
+      (e.target.value === '.' && state.display.indexOf('.') === -1) ||
+      ((state.lastClicked === '+' ||
+        state.lastClicked === '*' ||
+        state.lastClicked === '/' ||
+        state.lastClicked === '-') &&
+        e.target.value === '0')
+    ) {
       setState(prevState => ({
         ...prevState,
         display: prevState.display + e.target.value,
         equation: prevState.equation + e.target.value,
         lastClicked: e.target.value
       }));
+    } else if (state.lastClicked === '0') {
+      clearDisplay();
+      setState(prevState => ({
+        ...prevState,
+        equation:
+          prevState.equation.substring(0, prevState.equation.length - 1) +
+          e.target.value,
+        display: e.target.value,
+        lastClicked: e.target.value,
+        operators: 1
+      }));
     }
-    // Don't allow zeroes at beginning of number after an operator
+    /* // Don't allow zeroes at beginning of number after an operator
     else if (
       (state.lastClicked === '+' ||
         state.lastClicked === '*' ||
@@ -43,7 +61,7 @@ const Buttons = () => {
       setState(prevState => ({
         ...prevState
       }));
-    }
+    } */
     // If calculator is not in initial value and value is not a decimal
     // When number is entered append the number to the rest of the equation and display
     // MAX numbers allowed on display is 21
