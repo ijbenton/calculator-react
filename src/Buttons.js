@@ -218,6 +218,13 @@ const Buttons = () => {
         display: eval(prevState.equation),
         lastClicked: e.target.value
       }));
+    } else {
+      setState(prevState => ({
+        ...prevState,
+        equation: 'Error',
+        display: '0',
+        lastClicked: e.target.value
+      }));
     }
     // Removes synthetic event from the pool and allow references to the event to be retained by user code
     e.persist();

@@ -1,6 +1,8 @@
+* {
+  touch-action: manipulation;
+}
 body {
   margin: 0;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  touch-action: manipulation;
 }
