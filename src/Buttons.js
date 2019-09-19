@@ -50,18 +50,6 @@ const Buttons = () => {
         operators: 1
       }));
     }
-    /* // Don't allow zeroes at beginning of number after an operator
-    else if (
-      (state.lastClicked === '+' ||
-        state.lastClicked === '*' ||
-        state.lastClicked === '/' ||
-        state.lastClicked === '-') &&
-      e.target.value === '0'
-    ) {
-      setState(prevState => ({
-        ...prevState
-      }));
-    } */
     // If calculator is not in initial value and value is not a decimal
     // When number is entered append the number to the rest of the equation and display
     // MAX numbers allowed on display is 21
