@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CalculatorContext } from './calculatorContext';
+import { CalculatorContext } from '../context/calculatorContext';
 
 const Display = () => {
   const [state] = useContext(CalculatorContext);

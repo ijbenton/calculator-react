@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CalculatorContext } from './calculatorContext';
+import { CalculatorContext } from '../context/calculatorContext';
 
 const Buttons = () => {
   const [state, setState] = useContext(CalculatorContext);
@@ -158,10 +158,10 @@ const Buttons = () => {
         e.target.value === '*' ||
         e.target.value === '/' ||
         e.target.value === '-') &&
-      (state.lastClicked !== '+' &&
+      state.lastClicked !== '+' &&
         state.lastClicked !== '*' &&
         state.lastClicked !== '/' &&
-        state.lastClicked !== '-')
+        state.lastClicked !== '-'
     ) {
       clearDisplay();
       setState(prevState => ({

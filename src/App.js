@@ -1,7 +1,7 @@
 import React from 'react';
-import Display from './Display';
-import Buttons from './Buttons';
-import { CalculatorProvider } from './calculatorContext';
+import Display from './components/Display';
+import Buttons from './components/Buttons';
+import { CalculatorProvider } from './context/calculatorContext';
 import './App.scss';
 
 const App = () => {
