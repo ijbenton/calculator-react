@@ -7,6 +7,7 @@ const Buttons = () => {
   const handleNum = e => {
     // Clear display and equation if starting from initial value or after evaluated
     // Dont allow zeroes at beginning of equation
+    console.log(state);
     if (
       (state.display === '0' &&
         e.target.value !== '0' &&
@@ -159,9 +160,9 @@ const Buttons = () => {
         e.target.value === '/' ||
         e.target.value === '-') &&
       state.lastClicked !== '+' &&
-        state.lastClicked !== '*' &&
-        state.lastClicked !== '/' &&
-        state.lastClicked !== '-'
+      state.lastClicked !== '*' &&
+      state.lastClicked !== '/' &&
+      state.lastClicked !== '-'
     ) {
       clearDisplay();
       setState(prevState => ({
